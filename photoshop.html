@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>포토샵 CC 마스터 노트 | 디자인이 세상을 바꾼다</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f2f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.45;
+            color: #1a2634;
+            padding: 2rem 1rem;
+        }
+
+        /* 메인 컨테이너 */
+        .notebook {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 헤더 스타일 */
+        .hero {
+            background: linear-gradient(135deg, #0B1E2E 0%, #1C3A4F 100%);
+            border-radius: 2rem;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.85;
+            border-left: 3px solid #5D9BC7;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .hero .meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #cbdbe6;
+        }
+
+        /* 그리드 및 카드 */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            overflow: hidden;
+            border: 1px solid #eef2f8;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            background: #F8FAFE;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid #E2E9F2;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: -0.3px;
+            color: #0f2b3b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-header span {
+            background: #1C3A4F;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 40px;
+            padding: 0.2rem 0.7rem;
+        }
+
+        .card-content {
+            padding: 1.3rem 1.5rem 1.6rem;
+        }
+
+        /* 표 디자인 모던 */
+        .compact-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .compact-table th {
+            text-align: left;
+            background: #F0F5FA;
+            padding: 0.6rem 0.8rem;
+            font-weight: 600;
+            color: #2c4c6c;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .compact-table td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid #EDF2F7;
+            vertical-align: top;
+        }
+
+        .badge {
+            background: #EFF3F8;
+            border-radius: 20px;
+            padding: 0.2rem 0.6rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #1f6392;
+            display: inline-block;
+        }
+
+        kbd {
+            background: #F0F2F5;
+            border-radius: 8px;
+            padding: 0.2rem 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            font-size: 0.7rem;
+            border: 1px solid #dce3ec;
+            box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.05);
+            margin: 0 2px;
+            white-space: nowrap;
+        }
+
+        .shortcut-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.5rem;
+        }
+
+        .short-item {
+            background: #F7F9FC;
+            border-radius: 12px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.75rem;
+            border-left: 3px solid #5D9BC7;
+        }
+
+        hr {
+            margin: 1.2rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #e0e8f0, transparent);
+        }
+
+        .two-col-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem 1rem;
+        }
+
+        .tip-highlight {
+            background: #FEF9E6;
+            border-left: 4px solid #F5B042;
+            padding: 0.6rem 1rem;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1rem 0 0.5rem;
+            color: #1E3A4D;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 0.75rem;
+            color: #6c86a3;
+            border-top: 1px solid #DAE3EC;
+            padding-top: 1.8rem;
+        }
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 1.8rem; }
+            .section-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="notebook">
+    <div class="hero">
+        <h1>🎨 디자인이 세상을 바꾼다<br>포토샵 CC 중간고사 정리노트</h1>
+        <div class="sub">원리부터 실무 테크닉까지 · Chapter 01~09 핵심개념 + 툴 + 단축키 + 합성마스터</div>
+        <div class="meta">
+            <span>📘 아이콕스 · 442페이지 완전정리</span>
+            <span>⚡ 비파괴 편집 · 레이어 · 채널 · 필터</span>
+        </div>
+    </div>
+
+    <!-- 1장: 기본 개념 + 인터페이스 -->
+    <div class="section-grid">
+        <div class="card">
+            <div class="card-header">📌 01. 포토샵 기본기 <span>CORE</span></div>
+            <div class="card-content">
+                <div><span class="badge">Pixel</span> 비트맵 최소 단위 &nbsp;|&nbsp; <span class="badge">해상도</span> 화면 72ppi · 인쇄 300ppi</div>
+                <table class="compact-table" style="margin-top: 12px;">
+                    <tr><td style="width: 35%;">🎯 비트맵 vs 벡터</td><td>비트맵: 픽셀집합 (jpg/png) 확대 깨짐<br>벡터: 수학적 함수 (ai/eps) 확대 무손실</td></tr>
+                    <tr><td>🖥️ Screen vs Print</td><td>Screen: RGB, 72ppi / Print: CMYK, 300ppi, mm</td></tr>
+                    <tr><td>🌈 RGB vs CMYK</td><td>RGB(빛, 가산혼합) 모니터용 / CMYK(잉크, 감산) 인쇄용</td></tr>
+                </table>
+                <div class="tip-highlight">💡 레이어 살아있는 원본은 반드시 <strong>PSD</strong>로 저장! <kbd>Ctrl+S</kbd> 습관</div>
+                <div><strong>⚙️ 인터페이스 핵심:</strong> <kbd>Tab</kbd> 패널 숨기기, <kbd>F</kbd> 화면모드, <kbd>D</kbd> 전경/배경 기본(흑백), <kbd>X</kbd> 색 교체</div>
+                <div style="margin-top: 10px;"><strong>📏 이미지/캔버스 사이즈</strong> <kbd>Ctrl+Alt+I</kbd> / <kbd>Ctrl+Alt+C</kbd> · Resample Preserve Details 확대 선명</div>
+                <div><strong>🧩 레이어 기초:</strong> <kbd>Ctrl+J</kbd> 복사, 배경레이어 잠금해제 더블클릭, History 패널 스냅샷</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">✂️ 02. 선택 · 이동 · 변형 <span>TOOL</span></div>
+            <div class="card-content">
+                <div><span class="badge">V</span> 이동 툴: <kbd>Alt+드래그</kbd> 복제이동, <kbd>Shift+방향키</kbd> 10px 이동, 자동선택 가능</div>
+                <div><span class="badge">Ctrl+T</span> 자유변형: 코너 비율유지, <kbd>Alt+드래그</kbd> 중심기준, 우클릭 왜곡/뒤집기/뒤틀기</div>
+                <div><strong>선택툴:</strong> <span class="badge">M</span> 정형(Feather 경계흐림) · <span class="badge">L</span> 올가미(다각형/자석) · <span class="badge">W</span> 개체선택/AI, 빠른선택, 마술봉(Tolerance)</div>
+                <div class="shortcut-grid">
+                    <span class="short-item"><kbd>Ctrl+A</kbd> 전체선택</span>
+                    <span class="short-item"><kbd>Ctrl+D</kbd> 해제</span>
+                    <span class="short-item"><kbd>Ctrl+Shift+I</kbd> 반전</span>
+                    <span class="short-item"><kbd>Shift+F6</kbd> Feather</span>
+                    <span class="short-item"><kbd>Q</kbd> 퀵마스크</span>
+                </div>
+                <div><span class="badge">C</span> 크롭툴: 수평맞춤, Content-Aware 빈공간 자동채움</div>
+                <div class="tip-highlight">✨ 배경 단색 > 마술봉 선택 후 <kbd>Ctrl+Shift+I</kbd> 반전 = 오브젝트 완벽선택</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">🖌️ 03. 복원·리터칭 & 드로잉 <span>HEAL+BRUSH</span></div>
+            <div class="card-content">
+                <div><strong>🎭 선명/흐림(R):</strong> 블러(흐림) · 샤픈(선명) · 스머지(뭉개기)</div>
+                <div><strong>☀️ 닷지/번(O):</strong> 닷지(밝게) / 번(어둡게) / 스펀지(채도) Range: Shadow/Mid/Highlight</div>
+                <div><strong>🩹 복원툴(J):</strong> 스팟힐링(자동), 힐링브러시(<kbd>Alt</kbd> 기준점), 패치, 콘텐츠인식이동, 적목현상</div>
+                <div><strong>🔖 복제도장(S):</strong> <kbd>Alt+클릭</kbd> 기준점 > 드래그 복제 (선명복제) · 패턴도장: Edit>Define Pattern</div>
+                <hr>
+                <div><strong>✏️ 브러시(B):</strong> <kbd>[ / ]</kbd> 크기, <kbd>Shift+[ ]</kbd> 경도 · Opacity(불투명)/Flow(흐름)</div>
+                <div><strong>🎨 브러시 세팅(F5):</strong> 쉐이프 다이내믹, 스캐터링, 듀얼브러시, 컬러 다이내믹, Transfer 등</div>
+                <div><strong>🧽 지우개(E):</strong> 배경지우개(투명), 마술지우개(유사색 일괄)</div>
+                <div><span class="badge">G</span> 그라디언트(선형/원형/방사) · <span class="badge">K</span> 페인트통 · <kbd>Alt+Del</kbd> 전경색, <kbd>Ctrl+Del</kbd> 배경색 채우기</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2단 그리드: 보정/색상 + 드로잉+벡터 -->
+    <div class="section-grid">
+        <div class="card">
+            <div class="card-header">🎚️ 04. 이미지 보정 <span>COLOR·TONES</span></div>
+            <div class="card-content">
+                <div class="shortcut-grid">
+                    <span class="short-item"><kbd>Ctrl+Shift+L</kbd> Auto Tone</span>
+                    <span class="short-item"><kbd>Alt+Shift+Ctrl+L</kbd> Auto Contrast</span>
+                    <span class="short-item"><kbd>Ctrl+Shift+B</kbd> Auto Color</span>
+                </div>
+                <div><strong>🌓 Levels (<kbd>Ctrl+L</kbd>)</strong> – 히스토그램 보정(Input/Output Levels)</div>
+                <div><strong>📈 Curves (<kbd>Ctrl+M</kbd>)</strong> – S자 곡선 = 대비 극대화, 정밀보정</div>
+                <div><strong>🌈 Hue/Saturation (<kbd>Ctrl+U</kbd>)</strong> – 색상/채도/명도, Vibrance(자연스러운 채도)</div>
+                <div><strong>🎨 Color Balance (<kbd>Ctrl+B</kbd>)</strong> / Black & White (<kbd>Alt+Shift+Ctrl+B</kbd>) · Photo Filter</div>
+                <div><strong>✨ 특수보정:</strong> Invert(<kbd>Ctrl+I</kbd>), Posterize, Gradient Map, Selective Color, Shadows/Highlights, Match Color, Replace Color</div>
+                <div class="tip-highlight">✅ 전체보정 = Levels, 부분/정밀 = Curves, 색감 = Hue/Saturation</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">✒️ 05. 드로잉+벡터+텍스트 <span>PEN·SHAPE·TYPE</span></div>
+            <div class="card-content">
+                <div><span class="badge">P</span> <strong>펜툴</strong> : 직선/곡선 기준점, <kbd>Alt</kbd> 방향선 제거, <kbd>Ctrl+Enter</kbd> 패스→선택영역</div>
+                <div>자유변형 펜, 곡률펜, 콘텐츠인식 추적, 기준점 추가/삭제, 변환포인트</div>
+                <div><span class="badge">U</span> <strong>Shape 툴</strong> : 사각형/원/다각형, Fill/Stroke, <kbd>Shift</kbd> 비율유지, 레스터화(비트맵전환)</div>
+                <div><span class="badge">T</span> <strong>텍스트툴</strong> : 가로/세로, 마스크 텍스트, Character패널(행간/자간), Warp Text 왜곡, 패스따라 글쓰기</div>
+                <div class="tip-highlight">📌 패스 따라 글씨: 패스 위에 텍스트툴 커서 → 클릭 입력</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 합성 마스터 (블렌드/마스크/채널) -->
+    <div class="section-grid">
+        <div class="card">
+            <div class="card-header">🌀 06. 합성의 정수 <span>BLEND MODE · MASK · CHANNEL</span></div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <tr><th>모드</th><th>효과</th></tr>
+                    <tr><td>Multiply</td><td>전체 어둡게 (흰색 투명)</td></tr>
+                    <tr><td>Screen</td><td>전체 밝게 (검정 투명)</td></tr>
+                    <tr><td>Overlay</td><td>대비 강조, 중간색 혼합</td></tr>
+                    <tr><td>Soft Light / Hard Light</td><td>부드러운/강한 조명효과</td></tr>
+                    <tr><td>Color / Luminosity</td><td>색상/명도 유지 합성</td></tr>
+                </table>
+                <div><strong>🧩 Opacity vs Fill:</strong> Fill=0% + 레이어스타일 → 이미지만 숨기고 효과 유지</div>
+                <div><strong>✨ 레이어 스타일(fx):</strong> Drop Shadow, Inner Shadow, Bevel & Emboss, Stroke, Overlay</div>
+                <div><strong>🎭 레이어 마스크:</strong> 흰색=보임, 검정=가림(비파괴). <kbd>Alt+클릭</kbd> 마스크 원본보기, Shift 비활성화</div>
+                <div><strong>✂️ 클리핑 마스크:</strong> <kbd>Ctrl+Alt+G</kbd> (아래 레이어 형태로 위 레이어 제한)</div>
+                <div><strong>⚡ 조정 레이어</strong> – 원본 손상 없이 색상보정 (반원 아이콘)</div>
+                <div><strong>📀 채널 패널:</strong> RGB/CMYK, 알파채널(선택영역 흑백 저장), <kbd>Ctrl+클릭</kbd> 선택영역 로드</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">✨ 07. 필터 & 스마트 필터 <span>AI+LIQUIFY+GALLERY</span></div>
+            <div class="card-content">
+                <div><strong>🧠 스마트 필터:</strong> [Filter > Convert for Smart Filters] 비파괴적용, 수정가능</div>
+                <div><strong>🤖 뉴럴 필터:</strong> Colorize(흑백→컬러), Landscape Mixer, Skin Smoothing, Smart Portrait, Harmonization</div>
+                <div><strong>💧 Liquify (<kbd>Shift+Ctrl+X</kbd>)</strong> – Forward Warp, Pucker, Bloat, Face Tool 얼굴인식, Freeze Mask</div>
+                <div><strong>🎨 필터 갤러리:</strong> Artistic, Sketch, Texture, Stylize 등 중첩가능</div>
+                <div><strong>📌 주요 필터:</strong> Gaussian Blur, Motion Blur, Add Noise, Mosaic, Clouds, Lens Flare, Unsharp Mask, High Pass, Polar Coordinates, Wind, Emboss</div>
+                <div class="tip-highlight">⚡ High Pass + Overlay 모드 = 초고속 선명도 향상 기법!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 실무 테크닉 + 단축키 총정리 (부록) -->
+    <div class="section-grid">
+        <div class="card">
+            <div class="card-header">🚀 08. 실무 테크닉 & 마스터팁</div>
+            <div class="card-content">
+                <ul style="margin-left: 1.2rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                    <li>🎯 마스크+클리핑마스크: 이미지가 텍스트에 채워진 효과</li>
+                    <li>🎯 Fill=0% + Inner Shadow → 조각 새김 효과</li>
+                    <li>🎯 그라디언트(검정→투명)+클리핑마스크 = 자연스러운 그림자</li>
+                    <li>🎯 Wind 필터 반복 적용 → 속도감/역동감</li>
+                    <li>🎯 High Pass + Overlay: 선명도 향상 (고급 샤픈)</li>
+                    <li>🎯 Displace 필터 + PSD 맵 → 텍스트 입체 질감</li>
+                    <li>🎯 Polar Coordinates → 방사형 배경</li>
+                    <li>🎯 Clouds + Difference Clouds + Filter Gallery → Grunge 텍스트</li>
+                    <li>🎯 [Select] > Modify > Contract 2px: 흰 테두리 제거</li>
+                    <li>🎯 Ctrl+F: 마지막 필터 재적용 / Alt+Ctrl+F 수치변경 재적용</li>
+                    <li>🎯 Image > Apply Image: 채널/레이어 합성 → 정교한 마스크</li>
+                </ul>
+                <div class="tip-highlight">💎 듀얼브러시 + Spacing 200% = 1x1x1 반복 패턴 아트</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">⚡ 부록 · 핵심 단축키 <span>생산성 200%</span></div>
+            <div class="card-content">
+                <div class="two-col-list">
+                    <div><kbd>Ctrl+N</kbd> 새 파일</div>
+                    <div><kbd>Ctrl+O</kbd> 열기</div>
+                    <div><kbd>Ctrl+S</kbd> 저장</div>
+                    <div><kbd>Ctrl+Shift+S</kbd> 다른이름 저장</div>
+                    <div><kbd>Ctrl+Z</kbd>/<kbd>Ctrl+Alt+Z</kbd> 실행취소/되돌리기</div>
+                    <div><kbd>Ctrl+T</kbd> 자유변형</div>
+                    <div><kbd>Ctrl+J</kbd> 레이어 복제</div>
+                    <div><kbd>Ctrl+E</kbd> 레이어 합치기</div>
+                    <div><kbd>Ctrl+G</kbd> 그룹 만들기</div>
+                    <div><kbd>Ctrl+R</kbd> 눈금자</div>
+                    <div><kbd>Ctrl+;</kbd> 가이드 표시</div>
+                    <div><kbd>Ctrl+0</kbd> 화면맞춤</div>
+                    <div><kbd>Ctrl++/-</kbd> 확대/축소</div>
+                    <div><kbd>Shift+F5</kbd> 채우기 대화상자</div>
+                    <div><kbd>Ctrl+Shift+X</kbd> Liquify</div>
+                    <div><kbd>Ctrl+Alt+G</kbd> 클리핑 마스크</div>
+                </div>
+                <hr>
+                <div><strong>🎨 마스크 요약</strong> – 레이어 마스크(흰/검), 클리핑 마스크(아래 형태), 퀵마스크(Q: 붉은영역), 벡터마스크(패스기반)</div>
+                <div><strong>🔁 채우기 단축키:</strong> <kbd>Alt+Delete</kbd> 전경색, <kbd>Ctrl+Delete</kbd> 배경색</div>
+                <div><strong>🖌️ 브러시 단축</strong> <kbd>[ / ]</kbd> 크기, <kbd>Shift+[ ]</kbd> 경도조절</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 추가: 파일 형식 및 인쇄/화면 요약 -->
+    <div class="section-grid">
+        <div class="card">
+            <div class="card-header">📂 파일 포맷 & 핵심 개념</div>
+            <div class="card-content">
+                <table class="compact-table">
+                    <tr><th>포맷</th><th>용도</th><th>특징</th></tr>
+                    <tr><td>JPG</td><td>사진, 다채로운 이미지</td><td>손실압축</td></tr>
+                    <tr><td>GIF</td><td>텍스트, 로고, 애니메이션</td><td>256색</td></tr>
+                    <tr><td>PNG</td><td>투명+로고+사진</td><td>무손실, 알파채널 지원</td></tr>
+                    <tr><td>PSD</td><td>원본 레이어 저장</td><td>모든 정보 보존</td></tr>
+                </table>
+                <div style="margin-top: 10px;">📌 인쇄용 <strong>CMYK 300dpi</strong>, 웹용 <strong>RGB 72dpi</strong> · 이미지 리샘플링 옵션: Bicubic Sharper(축소선명), Preserve Details(확대)</div>
+                <div class="tip-highlight">⭐ 배경 레이어 잠금해제 후 일반레이어로 전환해야 복잡한 합성 자유로움!</div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">📖 디자인 철학 & 최종 점검</div>
+            <div class="card-content">
+                <p>✔️ 모든 보정, 합성은 <strong>비파괴적</strong>으로 작업할 것 (스마트 오브젝트, 조정 레이어, 마스크 활용)</p>
+                <p>✔️ 레이어 이름 정리 & 그룹화로 전문가 워크플로우</p>
+                <p>✔️ <kbd>Ctrl+Alt+Z</kbd> 히스토리로 언제든 복구, 스냅샷 저장 습관</p>
+                <p>✔️ 채널을 활용한 정교한 마스킹, 알파채널 저장 → 헤어/투명 소재 추출</p>
+                <p>✔️ 마지막 필터 반복 <kbd>Ctrl+F</kbd> 로 창의적인 효과 레이어링</p>
+                <div class="tip-highlight">🎓 중간고사 완벽 대비: 블렌드모드+마스크+레벨/커브+펜툴 마스터 = 합성의 신</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-note">
+        ⚡ 포토샵 CC 중간고사 완전정리 | Chapter 01~09 + 부록 핵심 단축키 | 비트맵부터 뉴럴필터, 실무 테크닉까지
+    </div>
+</div>
+</body>
+</html>
