@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포토샵 단축키 총정리</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e9ecef;
+            font-family: -apple-system, 'Segoe UI', 'Inter', sans-serif;
+            padding: 2rem 1rem;
+            color: #1e2a3a;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* 헤더 */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1a2a3a, #2c5a6e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: #5c6f87;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* 카드 */
+        .card {
+            background: white;
+            border-radius: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            border: 1px solid #dee4ec;
+        }
+
+        .card-title {
+            background: #f8fafd;
+            padding: 1rem 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e2e8f0;
+            color: #1e4a6e;
+        }
+
+        .card-content {
+            padding: 1rem 1.2rem 1.2rem;
+        }
+
+        /* 테이블 */
+        .shortcut-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .shortcut-table th {
+            text-align: left;
+            padding: 0.7rem 0.5rem;
+            font-weight: 600;
+            color: #2c5a6e;
+            border-bottom: 1px solid #e9edf2;
+            font-size: 0.85rem;
+        }
+
+        .shortcut-table td {
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid #f0f2f5;
+            font-size: 0.85rem;
+        }
+
+        .shortcut-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        kbd {
+            background: #f0f3f8;
+            border-radius: 6px;
+            padding: 0.2rem 0.6rem;
+            font-family: 'SF Mono', 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid #cad2db;
+            box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.04);
+            white-space: nowrap;
+            margin: 0 2px;
+        }
+
+        .badge {
+            background: #eef2f8;
+            padding: 0.15rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #2c6b8f;
+        }
+
+        .tip {
+            background: #fef7e0;
+            border-left: 3px solid #f3b33d;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            border-top: 1px solid #e9edf2;
+        }
+
+        .two-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 1rem;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #7c8ea0;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dce3ec;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⚡ Photoshop 단축키</h1>
+        <p>자주 쓰는 핵심 단축키 · 작업 속도 2배 올리기</p>
+    </div>
+
+    <!-- 1번 카드: 파일/편집/변형 -->
+    <div class="card">
+        <div class="card-title">📁 파일 & 편집 · 변형</div>
+        <div class="card-content">
+            <table class="shortcut-table">
+                <tr><th style="width: 45%">기능</th><th>단축키</th></tr>
+                <tr><td>새 파일 열기</td><td><kbd>Ctrl + N</kbd></td></tr>
+                <tr><td>파일 열기</td><td><kbd>Ctrl + O</kbd></td></tr>
+                <tr><td>저장</td><td><kbd>Ctrl + S</kbd></td></tr>
+                <tr><td>다른 이름으로 저장</td><td><kbd>Ctrl + Shift + S</kbd></td></tr>
+                <tr><td>실행 취소 (한 단계)</td><td><kbd>Ctrl + Z</kbd></td></tr>
+                <tr><td>단계별 실행 취소</td><td><kbd>Ctrl + Alt + Z</kbd></td></tr>
+                <tr><td>자유 변형</td><td><kbd>Ctrl + T</kbd></td></tr>
+                <tr><td>변형 반복</td><td><kbd>Ctrl + Shift + T</kbd></td></tr>
+                <tr><td>레이어 복제</td><td><kbd>Ctrl + J</kbd></td></tr>
+                <tr><td>레이어 그룹화</td><td><kbd>Ctrl + G</kbd></td></tr>
+                <tr><td>그룹 해제</td><td><kbd>Ctrl + Shift + G</kbd></td></tr>
+                <tr><td>아래 레이어와 합치기</td><td><kbd>Ctrl + E</kbd></td></tr>
+                <tr><td>모든 레이어 병합</td><td><kbd>Ctrl + Shift + E</kbd></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2번 카드: 선택 & 색상 보정 -->
+    <div class="card">
+        <div class="card-title">🎯 선택 영역 · 색상 보정</div>
+        <div class="card-content">
+            <div class="two-grid">
+                <div>
+                    <table class="shortcut-table">
+                        <tr><th>선택 기능</th><th>단축키</th></tr>
+                        <tr><td>전체 선택</td><td><kbd>Ctrl + A</kbd></td></tr>
+                        <tr><td>선택 해제</td><td><kbd>Ctrl + D</kbd></td></tr>
+                        <tr><td>선택 영역 반전</td><td><kbd>Ctrl + Shift + I</kbd></td></tr>
+                        <tr><td>채우기 (내용 인식)</td><td><kbd>Shift + F5</kbd></td></tr>
+                        <tr><td>경계 흐림 (Feather)</td><td><kbd>Shift + F6</kbd></td></tr>
+                        <tr><td>퀵 마스크 모드</td><td><kbd>Q</kbd></td></tr>
+                    </table>
+                </div>
+                <div>
+                    <table class="shortcut-table">
+                        <tr><th>보정 기능</th><th>단축키</th></tr>
+                        <tr><td>Levels (레벨)</td><td><kbd>Ctrl + L</kbd></td></tr>
+                        <tr><td>Curves (커브)</td><td><kbd>Ctrl + M</kbd></td></tr>
+                        <tr><td>색상/채도</td><td><kbd>Ctrl + U</kbd></td></tr>
+                        <tr><td>Color Balance</td><td><kbd>Ctrl + B</kbd></td></tr>
+                        <tr><td>자동 톤</td><td><kbd>Ctrl + Shift + L</kbd></td></tr>
+                        <tr><td>자동 컬러</td><td><kbd>Ctrl + Shift + B</kbd></td></tr>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div><span class="badge">채우기 꿀팁</span> &nbsp; <kbd>Alt + Delete</kbd> 전경색 채우기 &nbsp; | &nbsp; <kbd>Ctrl + Delete</kbd> 배경색 채우기</div>
+        </div>
+    </div>
+
+    <!-- 3번 카드: 레이어 & 마스크 + 브러시 -->
+    <div class="card">
+        <div class="card-title">🧩 레이어 · 마스크 · 브러시</div>
+        <div class="card-content">
+            <div class="two-grid">
+                <div>
+                    <table class="shortcut-table">
+                        <tr><th>레이어/마스크</th><th>단축키</th></tr>
+                        <tr><td>클리핑 마스크</td><td><kbd>Ctrl + Alt + G</kbd></td></tr>
+                        <tr><td>레이어 마스크 추가</td><td><kbd>레이어 패널 하단 +</kbd></td></tr>
+                        <tr><td>조정 레이어</td><td><kbd>패널 하단 반원 아이콘</kbd></td></tr>
+                        <tr><td>새 레이어</td><td><kbd>Ctrl + Shift + N</kbd></td></tr>
+                        <tr><td>레이어 스타일 복사</td><td><kbd>Alt + 드래그 (효과)</kbd></td></tr>
+                    </table>
+                </div>
+                <div>
+                    <table class="shortcut-table">
+                        <tr><th>브러시 & 툴</th><th>단축키</th></tr>
+                        <tr><td>브러시 크기 감소/증가</td><td><kbd>[</kbd> / <kbd>]</kbd></td></tr>
+                        <tr><td>브러시 경도 조절</td><td><kbd>Shift + [</kbd> / <kbd>Shift + ]</kbd></td></tr>
+                        <tr><td>이동 툴</td><td><kbd>V</kbd></td></tr>
+                        <tr><td>자유 변형 툴</td><td><kbd>Ctrl + T</kbd></td></tr>
+                        <tr><td>손 툴 (화면 이동)</td><td><kbd>H</kbd> 또는 <kbd>Space</kbd></td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tip">
+                💡 <strong>팁</strong> · <kbd>Alt + 클릭</kbd> 레이어 마스크 미리보기  &nbsp;|&nbsp;
+                <kbd>Shift + 클릭</kbd> 마스크 끄기/켜기
+            </div>
+        </div>
+    </div>
+
+    <!-- 4번 카드: 필터 & 화면 단축키 -->
+    <div class="card">
+        <div class="card-title">✨ 필터 · 화면 보기 · 기타</div>
+        <div class="card-content">
+            <table class="shortcut-table">
+                <tr><th>기능</th><th>단축키</th></tr>
+                <tr><td>마지막 필터 다시 적용</td><td><kbd>Ctrl + F</kbd></td></tr>
+                <tr><td>액화 (Liquify)</td><td><kbd>Ctrl + Shift + X</kbd></td></tr>
+                <tr><td>Camera Raw 필터</td><td><kbd>Ctrl + Shift + A</kbd></td></tr>
+                <tr><td>확대 / 축소</td><td><kbd>Ctrl + +</kbd> / <kbd>Ctrl + -</kbd></td></tr>
+                <tr><td>100% 확대 보기</td><td><kbd>Ctrl + 1</kbd></td></tr>
+                <tr><td>화면에 이미지 맞추기</td><td><kbd>Ctrl + 0</kbd></td></tr>
+                <tr><td>눈금자 표시</td><td><kbd>Ctrl + R</kbd></td></tr>
+                <tr><td>가이드 표시/숨기기</td><td><kbd>Ctrl + ;</kbd></td></tr>
+                <tr><td>전체 화면 모드</td><td><kbd>F</kbd></td></tr>
+                <tr><td>패널 모두 숨기기</td><td><kbd>Tab</kbd></td></tr>
+                <tr><td>전경/배경색 기본값 (흑백)</td><td><kbd>D</kbd></td></tr>
+                <tr><td>전경/배경색 바꾸기</td><td><kbd>X</kbd></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 카드형 요약 -->
+    <div class="card">
+        <div class="card-title">📌 꼭 기억할 실무 단축키</div>
+        <div class="card-content">
+            <div class="two-grid">
+                <div>
+                    <kbd>Ctrl + Alt + Z</kbd> — 히스토리 단계 뒤로<br>
+                    <kbd>Ctrl + J</kbd> — 선택 영역 새 레이어 복사<br>
+                    <kbd>Ctrl + T</kbd> → <kbd>Enter</kbd> 변환 확정<br>
+                    <kbd>Alt + Shift + Ctrl + K</kbd> — 단축키 설정창
+                </div>
+                <div>
+                    <kbd>Shift + F5</kbd> — 내용 인식 채우기<br>
+                    <kbd>Ctrl + Alt + G</kbd> — 클리핑 마스크 생성<br>
+                    <kbd>[ ]</kbd> 브러쉬 크기, <kbd>Shift</kbd>+브러시 경도<br>
+                    <kbd>Ctrl + 0</kbd> 전체 화면 맞춤
+                </div>
+            </div>
+            <div class="tip">
+                🚀 <strong>프로 팁</strong> : 스마트 오브젝트 변환 후 필터 적용 (<kbd>Ctrl + Shift + F</kbd> 페이드 필터효과 감소)
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ⚡ Photoshop CC 핵심 단축키 모음 · 자주 보면서 손에 익히기
+    </div>
+</div>
+</body>
+</html>
