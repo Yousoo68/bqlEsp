@@ -2,304 +2,637 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>포토샵 단축키 총정리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Photoshop 모의고사</title>
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans', sans-serif;
         }
-
         body {
-            background: #e9ecef;
-            font-family: -apple-system, 'Segoe UI', 'Inter', sans-serif;
-            padding: 2rem 1rem;
-            color: #1e2a3a;
+            background: linear-gradient(145deg, #f0f2f5 0%, #e6e9f0 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1100px;
+        .app-container {
+            max-width: 1300px;
             margin: 0 auto;
         }
-
-        /* 헤더 */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
+        /* header & controls */
+        .quiz-header {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1rem 1.8rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
         }
-
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1a2a3a, #2c5a6e);
+        h1 {
+            margin: 0;
+            font-size: 1.7rem;
+            background: linear-gradient(135deg, #1e2b3c, #2c4c6e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.5px;
         }
-
-        .header p {
-            color: #5c6f87;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* 카드 */
-        .card {
-            background: white;
-            border-radius: 1.2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            border: 1px solid #dee4ec;
-        }
-
-        .card-title {
-            background: #f8fafd;
-            padding: 1rem 1.5rem;
-            font-weight: 700;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #e2e8f0;
-            color: #1e4a6e;
-        }
-
-        .card-content {
-            padding: 1rem 1.2rem 1.2rem;
-        }
-
-        /* 테이블 */
-        .shortcut-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .shortcut-table th {
-            text-align: left;
-            padding: 0.7rem 0.5rem;
-            font-weight: 600;
-            color: #2c5a6e;
-            border-bottom: 1px solid #e9edf2;
-            font-size: 0.85rem;
-        }
-
-        .shortcut-table td {
-            padding: 0.6rem 0.5rem;
-            border-bottom: 1px solid #f0f2f5;
-            font-size: 0.85rem;
-        }
-
-        .shortcut-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        kbd {
-            background: #f0f3f8;
-            border-radius: 6px;
-            padding: 0.2rem 0.6rem;
-            font-family: 'SF Mono', 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid #cad2db;
-            box-shadow: inset 0 1px 0 #fff, 0 1px 1px rgba(0,0,0,0.04);
-            white-space: nowrap;
-            margin: 0 2px;
-        }
-
         .badge {
-            background: #eef2f8;
-            padding: 0.15rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #2c6b8f;
-        }
-
-        .tip {
-            background: #fef7e0;
-            border-left: 3px solid #f3b33d;
-            padding: 0.7rem 1rem;
-            border-radius: 12px;
+            background: #2c3e66;
+            color: white;
+            border-radius: 40px;
+            padding: 5px 14px;
             font-size: 0.8rem;
-            margin-top: 1rem;
+            font-weight: 500;
         }
-
-        hr {
-            margin: 1rem 0;
-            border: none;
-            border-top: 1px solid #e9edf2;
+        .config-panel {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 20px;
+            border: 1px solid #e2e8f0;
         }
-
-        .two-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
-
-        @media (max-width: 700px) {
-            .two-grid {
-                grid-template-columns: 1fr;
-            }
-            body {
-                padding: 1rem;
-            }
+        .input-group label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1e293b;
         }
-
-        .footer {
+        .input-group input {
+            width: 85px;
+            padding: 8px 12px;
+            border-radius: 40px;
+            border: 1px solid #cbd5e1;
             text-align: center;
+            font-weight: 500;
+            background: #f8fafc;
+        }
+        button {
+            background: #1e4668;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.85rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        button.primary {
+            background: #0f3b5c;
+        }
+        button.secondary {
+            background: #475569;
+        }
+        button.warning {
+            background: #b45347;
+        }
+        button.info {
+            background: #2c6e4f;
+        }
+        button:hover {
+            filter: brightness(1.08);
+            transform: translateY(-1px);
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .quiz-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-bottom: 35px;
+        }
+        .question-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.1s;
+            border-left: 6px solid;
+        }
+        .question-card.type-객관식 { border-left-color: #3b82f6; }
+        .question-card.type-주관식 { border-left-color: #10b981; }
+        .question-card.type-서술형 { border-left-color: #f59e0b; }
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        .q-type {
             font-size: 0.7rem;
-            color: #7c8ea0;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #dce3ec;
+            background: #eef2ff;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        .q-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 10px 0 12px 0;
+            line-height: 1.4;
+        }
+        .options-area {
+            margin: 12px 0;
+        }
+        .option-item {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px 14px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            background: #fefefe;
+        }
+        .feedback {
+            margin-top: 12px;
+            padding: 8px 14px;
+            border-radius: 28px;
+            font-size: 0.85rem;
+            background: #f1f5f9;
+        }
+        .correct-fb { color: #166534; background: #dcfce7; }
+        .wrong-fb { color: #991b1b; background: #fee2e2; }
+        .score-area {
+            background: #0f172a;
+            color: white;
+            border-radius: 2rem;
+            padding: 1rem 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .mistake-log, .history-log {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .toggle-section {
+            display: flex;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        hr { margin: 1rem 0; }
+        .history-item {
+            border-bottom: 1px solid #e9eef3;
+            padding: 8px 0;
+        }
+        .empty-placeholder {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 2.5rem;
+            text-align: center;
+            color: #475569;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px dashed #cbd5e1;
+        }
+        @media (max-width: 680px) {
+            .config-panel { flex-direction: column; align-items: stretch; }
+            .input-group input { width: 100%; }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>⚡ Photoshop 단축키</h1>
-        <p>자주 쓰는 핵심 단축키 · 작업 속도 2배 올리기</p>
+<div class="app-container">
+    <div class="quiz-header">
+        <h1>🎨 Photoshop 단축키 마스터</h1>
+        <div class="badge">⚡ 작업 속도 2배 올리기</div>
     </div>
 
-    <!-- 1번 카드: 파일/편집/변형 -->
-    <div class="card">
-        <div class="card-title">📁 파일 & 편집 · 변형</div>
-        <div class="card-content">
-            <table class="shortcut-table">
-                <tr><th style="width: 45%">기능</th><th>단축키</th></tr>
-                <tr><td>새 파일 열기</td><td><kbd>Ctrl + N</kbd></td></tr>
-                <tr><td>파일 열기</td><td><kbd>Ctrl + O</kbd></td></tr>
-                <tr><td>저장</td><td><kbd>Ctrl + S</kbd></td></tr>
-                <tr><td>다른 이름으로 저장</td><td><kbd>Ctrl + Shift + S</kbd></td></tr>
-                <tr><td>실행 취소 (한 단계)</td><td><kbd>Ctrl + Z</kbd></td></tr>
-                <tr><td>단계별 실행 취소</td><td><kbd>Ctrl + Alt + Z</kbd></td></tr>
-                <tr><td>자유 변형</td><td><kbd>Ctrl + T</kbd></td></tr>
-                <tr><td>변형 반복</td><td><kbd>Ctrl + Shift + T</kbd></td></tr>
-                <tr><td>레이어 복제</td><td><kbd>Ctrl + J</kbd></td></tr>
-                <tr><td>레이어 그룹화</td><td><kbd>Ctrl + G</kbd></td></tr>
-                <tr><td>그룹 해제</td><td><kbd>Ctrl + Shift + G</kbd></td></tr>
-                <tr><td>아래 레이어와 합치기</td><td><kbd>Ctrl + E</kbd></td></tr>
-                <tr><td>모든 레이어 병합</td><td><kbd>Ctrl + Shift + E</kbd></td></tr>
-            </table>
+    <!-- 문제 출제 수 입력 칸 -->
+    <div class="config-panel">
+        <div class="input-group">
+            <label>✏️ 객관식 문제 수</label>
+            <input type="number" id="mcCount" min="0" max="12" value="4">
+        </div>
+        <div class="input-group">
+            <label>📝 주관식 (단답형) 문제 수</label>
+            <input type="number" id="subCount" min="0" max="10" value="3">
+        </div>
+        <div class="input-group">
+            <label>📖 서술형 (설명) 문제 수</label>
+            <input type="number" id="descCount" min="0" max="8" value="2">
+        </div>
+        <button id="generateBtn" class="primary">✨ 새 문제 생성</button>
+        <button id="scoreBtn" class="info">✅ 자동 채점</button>
+        <button id="resetMistakeBtn" class="secondary">📘 오답노트 초기화</button>
+    </div>
+
+    <div class="action-buttons">
+        <button id="viewMistakeBtn">📓 오답노트 보기</button>
+        <button id="viewHistoryBtn">🕒 지금까지 푼 문제 기록</button>
+        <button id="closeSheetsBtn">❌ 닫기</button>
+    </div>
+
+    <!-- 문제 목록 렌더링 영역 (처음엔 비어있음) -->
+    <div id="quizArea" class="quiz-grid">
+        <div class="empty-placeholder">
+            ✨ 아직 생성된 문제가 없습니다.<br>
+            상단 패널에서 객관식/주관식/서술형 개수를 선택하고 <strong>「새 문제 생성」</strong> 버튼을 눌러 퀴즈를 시작하세요!
         </div>
     </div>
 
-    <!-- 2번 카드: 선택 & 색상 보정 -->
-    <div class="card">
-        <div class="card-title">🎯 선택 영역 · 색상 보정</div>
-        <div class="card-content">
-            <div class="two-grid">
-                <div>
-                    <table class="shortcut-table">
-                        <tr><th>선택 기능</th><th>단축키</th></tr>
-                        <tr><td>전체 선택</td><td><kbd>Ctrl + A</kbd></td></tr>
-                        <tr><td>선택 해제</td><td><kbd>Ctrl + D</kbd></td></tr>
-                        <tr><td>선택 영역 반전</td><td><kbd>Ctrl + Shift + I</kbd></td></tr>
-                        <tr><td>채우기 (내용 인식)</td><td><kbd>Shift + F5</kbd></td></tr>
-                        <tr><td>경계 흐림 (Feather)</td><td><kbd>Shift + F6</kbd></td></tr>
-                        <tr><td>퀵 마스크 모드</td><td><kbd>Q</kbd></td></tr>
-                    </table>
-                </div>
-                <div>
-                    <table class="shortcut-table">
-                        <tr><th>보정 기능</th><th>단축키</th></tr>
-                        <tr><td>Levels (레벨)</td><td><kbd>Ctrl + L</kbd></td></tr>
-                        <tr><td>Curves (커브)</td><td><kbd>Ctrl + M</kbd></td></tr>
-                        <tr><td>색상/채도</td><td><kbd>Ctrl + U</kbd></td></tr>
-                        <tr><td>Color Balance</td><td><kbd>Ctrl + B</kbd></td></tr>
-                        <tr><td>자동 톤</td><td><kbd>Ctrl + Shift + L</kbd></td></tr>
-                        <tr><td>자동 컬러</td><td><kbd>Ctrl + Shift + B</kbd></td></tr>
-                    </table>
-                </div>
-            </div>
-            <hr>
-            <div><span class="badge">채우기 꿀팁</span> &nbsp; <kbd>Alt + Delete</kbd> 전경색 채우기 &nbsp; | &nbsp; <kbd>Ctrl + Delete</kbd> 배경색 채우기</div>
-        </div>
+    <!-- 점수 패널 -->
+    <div id="scorePanel" class="score-area" style="display: none;">
+        <span>🏆 현재 점수: <strong id="scoreValue">0</strong> / <span id="totalPossible">0</span></span>
+        <span>⭐ 오답 수: <span id="wrongCountSpan">0</span></span>
     </div>
 
-    <!-- 3번 카드: 레이어 & 마스크 + 브러시 -->
-    <div class="card">
-        <div class="card-title">🧩 레이어 · 마스크 · 브러시</div>
-        <div class="card-content">
-            <div class="two-grid">
-                <div>
-                    <table class="shortcut-table">
-                        <tr><th>레이어/마스크</th><th>단축키</th></tr>
-                        <tr><td>클리핑 마스크</td><td><kbd>Ctrl + Alt + G</kbd></td></tr>
-                        <tr><td>레이어 마스크 추가</td><td><kbd>레이어 패널 하단 +</kbd></td></tr>
-                        <tr><td>조정 레이어</td><td><kbd>패널 하단 반원 아이콘</kbd></td></tr>
-                        <tr><td>새 레이어</td><td><kbd>Ctrl + Shift + N</kbd></td></tr>
-                        <tr><td>레이어 스타일 복사</td><td><kbd>Alt + 드래그 (효과)</kbd></td></tr>
-                    </table>
-                </div>
-                <div>
-                    <table class="shortcut-table">
-                        <tr><th>브러시 & 툴</th><th>단축키</th></tr>
-                        <tr><td>브러시 크기 감소/증가</td><td><kbd>[</kbd> / <kbd>]</kbd></td></tr>
-                        <tr><td>브러시 경도 조절</td><td><kbd>Shift + [</kbd> / <kbd>Shift + ]</kbd></td></tr>
-                        <tr><td>이동 툴</td><td><kbd>V</kbd></td></tr>
-                        <tr><td>자유 변형 툴</td><td><kbd>Ctrl + T</kbd></td></tr>
-                        <tr><td>손 툴 (화면 이동)</td><td><kbd>H</kbd> 또는 <kbd>Space</kbd></td></tr>
-                    </table>
-                </div>
-            </div>
-            <div class="tip">
-                💡 <strong>팁</strong> · <kbd>Alt + 클릭</kbd> 레이어 마스크 미리보기  &nbsp;|&nbsp;
-                <kbd>Shift + 클릭</kbd> 마스크 끄기/켜기
-            </div>
-        </div>
+    <!-- 오답노트 패널 -->
+    <div id="mistakePanel" class="mistake-log" style="display: none;">
+        <h3>📕 오답노트 (틀린 문제만)</h3>
+        <div id="mistakeList"></div>
     </div>
 
-    <!-- 4번 카드: 필터 & 화면 단축키 -->
-    <div class="card">
-        <div class="card-title">✨ 필터 · 화면 보기 · 기타</div>
-        <div class="card-content">
-            <table class="shortcut-table">
-                <tr><th>기능</th><th>단축키</th></tr>
-                <tr><td>마지막 필터 다시 적용</td><td><kbd>Ctrl + F</kbd></td></tr>
-                <tr><td>액화 (Liquify)</td><td><kbd>Ctrl + Shift + X</kbd></td></tr>
-                <tr><td>Camera Raw 필터</td><td><kbd>Ctrl + Shift + A</kbd></td></tr>
-                <tr><td>확대 / 축소</td><td><kbd>Ctrl + +</kbd> / <kbd>Ctrl + -</kbd></td></tr>
-                <tr><td>100% 확대 보기</td><td><kbd>Ctrl + 1</kbd></td></tr>
-                <tr><td>화면에 이미지 맞추기</td><td><kbd>Ctrl + 0</kbd></td></tr>
-                <tr><td>눈금자 표시</td><td><kbd>Ctrl + R</kbd></td></tr>
-                <tr><td>가이드 표시/숨기기</td><td><kbd>Ctrl + ;</kbd></td></tr>
-                <tr><td>전체 화면 모드</td><td><kbd>F</kbd></td></tr>
-                <tr><td>패널 모두 숨기기</td><td><kbd>Tab</kbd></td></tr>
-                <tr><td>전경/배경색 기본값 (흑백)</td><td><kbd>D</kbd></td></tr>
-                <tr><td>전경/배경색 바꾸기</td><td><kbd>X</kbd></td></tr>
-            </table>
-        </div>
-    </div>
-
-    <!-- 카드형 요약 -->
-    <div class="card">
-        <div class="card-title">📌 꼭 기억할 실무 단축키</div>
-        <div class="card-content">
-            <div class="two-grid">
-                <div>
-                    <kbd>Ctrl + Alt + Z</kbd> — 히스토리 단계 뒤로<br>
-                    <kbd>Ctrl + J</kbd> — 선택 영역 새 레이어 복사<br>
-                    <kbd>Ctrl + T</kbd> → <kbd>Enter</kbd> 변환 확정<br>
-                    <kbd>Alt + Shift + Ctrl + K</kbd> — 단축키 설정창
-                </div>
-                <div>
-                    <kbd>Shift + F5</kbd> — 내용 인식 채우기<br>
-                    <kbd>Ctrl + Alt + G</kbd> — 클리핑 마스크 생성<br>
-                    <kbd>[ ]</kbd> 브러쉬 크기, <kbd>Shift</kbd>+브러시 경도<br>
-                    <kbd>Ctrl + 0</kbd> 전체 화면 맞춤
-                </div>
-            </div>
-            <div class="tip">
-                🚀 <strong>프로 팁</strong> : 스마트 오브젝트 변환 후 필터 적용 (<kbd>Ctrl + Shift + F</kbd> 페이드 필터효과 감소)
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        ⚡ Photoshop CC 핵심 단축키 모음 · 자주 보면서 손에 익히기
+    <!-- 전체 기록 패널 -->
+    <div id="historyPanel" class="history-log" style="display: none;">
+        <h3>📋 전체 풀이 기록</h3>
+        <div id="historyList"></div>
     </div>
 </div>
+
+<script>
+    // ---------- PDF 기반 문제 데이터베이스 (객관식, 주관식, 서술형) ----------
+    // 객관식 문제 (단축키-기능 매칭, 선택지 4개)
+    const objectiveBank = [
+        { text: "Photoshop에서 새 파일을 여는 단축키는?", options: ["Ctrl + N", "Ctrl + O", "Ctrl + Shift + N", "Alt + Ctrl + N"], correct: "Ctrl + N" },
+        { text: "자유 변형(Transform) 단축키는?", options: ["Ctrl + D", "Ctrl + T", "Ctrl + M", "Ctrl + Shift + T"], correct: "Ctrl + T" },
+        { text: "선택 영역을 반전(Inverse)하는 단축키는?", options: ["Ctrl + Shift + I", "Ctrl + I", "Shift + F6", "Ctrl + Alt + Z"], correct: "Ctrl + Shift + I" },
+        { text: "아래 레이어와 합치기(Merge Down) 단축키는?", options: ["Ctrl + E", "Ctrl + G", "Ctrl + Shift + E", "Alt + E"], correct: "Ctrl + E" },
+        { text: "전경색을 채우는 단축키 (클립보드 채우기 아님) 옳은 것은?", options: ["Alt + Delete", "Ctrl + Delete", "Shift + F5", "Ctrl + Backspace"], correct: "Alt + Delete" },
+        { text: "Layer 그룹화 단축키는?", options: ["Ctrl + G", "Ctrl + Shift + G", "Ctrl + J", "Ctrl + Alt + G"], correct: "Ctrl + G" },
+        { text: "브러시 크기를 줄이는 단축키는?", options: ["[", "]", "Shift + [", "Ctrl + ["], correct: "[" },
+        { text: "액화 필터(Liquify)를 여는 단축키는?", options: ["Ctrl + Shift + X", "Ctrl + X", "Shift + X", "Alt + Ctrl + X"], correct: "Ctrl + Shift + X" },
+        { text: "전체 화면 모드(F)에 관한 설명으로 올바른 단축키는?", options: ["F", "Tab", "Ctrl + F", "Shift + F"], correct: "F" },
+        { text: "클리핑 마스크를 생성하는 단축키는?", options: ["Ctrl + Alt + G", "Ctrl + G", "Ctrl + Shift + G", "Alt + Ctrl + C"], correct: "Ctrl + Alt + G" }
+    ];
+
+    // 주관식 (단답형) : 정답은 대소문자 구분 없이 처리, 공백 트림
+    const subjectiveBank = [
+        { text: "단계별 실행 취소 (히스토리 단계 뒤로) 단축키는? (예: Ctrl+?? 형식)", answer: "Ctrl + Alt + Z" },
+        { text: "모든 레이어를 병합하는 단축키는? (Ctrl+? 형식)", answer: "Ctrl + Shift + E" },
+        { text: "퀵 마스크 모드를 켜고 끄는 단축키는? (영문자 1개)", answer: "Q" },
+        { text: "전경색과 배경색을 기본값(흑백)으로 바꾸는 단축키는? (예: D 또는 Ctrl+?)", answer: "D" },
+        { text: "내용 인식 채우기 대화상자 단축키는? (Shift+F?)", answer: "Shift + F5" },
+        { text: "Camera Raw 필터를 실행하는 단축키는? (Ctrl+Shift+?)", answer: "Ctrl + Shift + A" },
+        { text: "자유 변형 후 변환을 확정하는 키 (Enter 말고 콤보?)", answer: "Ctrl + T → Enter" } // 관용적으로 Enter 또는 Ctrl+Enter지만 PDF에 "Ctrl+T → Enter" 표시
+    ];
+
+    // 서술형 : 단축키 설명 또는 활용 질문, 키워드 중심 채점 (유연하게)
+    const descriptiveBank = [
+        { text: "스마트 오브젝트로 변환 후 필터를 적용하고, 필터 강도를 줄이는 페이드 필터 단축키(명령어)가 있다면 무엇인가요? (힌트: Ctrl+Shift+?)", keywords: ["Ctrl+Shift+F", "페이드", "Fade"] },
+        { text: "Photoshop에서 레이어 마스크를 추가하는 방법(단축키가 아닌 UI 동작)과, 마스크를 잠시 끄는 단축키(Shift + 클릭)를 설명하시오.", keywords: ["레이어패널", "마스크 추가", "Shift + 클릭", "끄기/켜기"] },
+        { text: "'Ctrl + Alt + Z' 와 'Ctrl + Z' 의 차이점을 간략히 설명하고, 실무에서 왜 히스토리 단축키가 중요한지 서술하시오.", keywords: ["한 단계", "단계별 실행 취소", "히스토리", "여러 단계"] },
+        { text: "Ctrl + J 단축키의 두 가지 용도(일반 복제 & 선택 영역 복제)와 관련하여 선택 영역이 있을 때 어떤 차이가 있는지 설명하세요.", keywords: ["레이어 복제", "선택 영역", "새 레이어 복사"] },
+        { text: "Shift + F5 (채우기) 중 '내용 인식' 옵션의 장점을 간략히 서술하고, 이와 유사한 기능을 가진 단축키나 도구를 하나 제시하세요.", keywords: ["내용 인식", "채우기", "내용 인식 채우기"] }
+    ];
+
+    // ------------------ 전역 상태 ------------------
+    let currentQuestions = [];      // { id, type, data, userAnswer, isCorrect, feedbackText }
+    let mistakeList = [];           // 저장 { id, type, questionText, userAnswer, correctAnswer, explanation }
+    let fullHistory = [];           // 모든 제출 기록 (채점 시 push 스냅샷)
+
+    let nextId = 1;
+
+    // helper: 객관식, 주관식, 서술형 각각 랜덤 샘플 (중복 없이 최대한 뽑기)
+    function sampleRandom(arr, count) {
+        if(count > arr.length) count = arr.length;
+        const shuffled = [...arr];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, count);
+    }
+
+    // 문제 생성 (객, 주, 서) - 렌더링까지 수행
+    function generateQuestions() {
+        const mcNum = Math.min(parseInt(document.getElementById('mcCount').value) || 0, objectiveBank.length);
+        const subNum = Math.min(parseInt(document.getElementById('subCount').value) || 0, subjectiveBank.length);
+        const descNum = Math.min(parseInt(document.getElementById('descCount').value) || 0, descriptiveBank.length);
+        
+        // 전체 0개인 경우 경고 및 처리
+        if(mcNum === 0 && subNum === 0 && descNum === 0) {
+            alert("최소 한 문제 이상 선택해주세요.");
+            return;
+        }
+        
+        const selectedMC = sampleRandom(objectiveBank, mcNum);
+        const selectedSub = sampleRandom(subjectiveBank, subNum);
+        const selectedDesc = sampleRandom(descriptiveBank, descNum);
+        
+        const newQuestions = [];
+        selectedMC.forEach(q => {
+            newQuestions.push({
+                id: nextId++,
+                type: '객관식',
+                data: { ...q, options: [...q.options], correct: q.correct },
+                userAnswer: '',
+                isCorrect: null,
+                feedbackText: ''
+            });
+        });
+        selectedSub.forEach(q => {
+            newQuestions.push({
+                id: nextId++,
+                type: '주관식',
+                data: { text: q.text, answer: q.answer },
+                userAnswer: '',
+                isCorrect: null,
+                feedbackText: ''
+            });
+        });
+        selectedDesc.forEach(q => {
+            newQuestions.push({
+                id: nextId++,
+                type: '서술형',
+                data: { text: q.text, keywords: q.keywords },
+                userAnswer: '',
+                isCorrect: null,
+                feedbackText: ''
+            });
+        });
+        // 섞기 (문제 유형 골고루 섞이도록)
+        for (let i = newQuestions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newQuestions[i], newQuestions[j]] = [newQuestions[j], newQuestions[i]];
+        }
+        currentQuestions = newQuestions;
+        
+        // 점수 패널 숨김 (새 문제 생성시 채점 정보 초기화)
+        document.getElementById('scorePanel').style.display = 'none';
+        // 오답노트 / 히스토리 패널 닫기
+        document.getElementById('mistakePanel').style.display = 'none';
+        document.getElementById('historyPanel').style.display = 'none';
+        
+        renderQuestions();  // 문제 UI 표시
+    }
+
+    // 객관식 정답체크
+    function checkObjective(qItem, selectedVal) {
+        return selectedVal === qItem.data.correct;
+    }
+    // 주관식 정답 (유연)
+    function checkSubjective(qItem, answerStr) {
+        const norm = answerStr.trim().toLowerCase().replace(/\s+/g, ' ');
+        const correctNorm = qItem.data.answer.toLowerCase().replace(/\s+/g, ' ');
+        // 특수 예외: Ctrl+T → Enter 처리 (자유변형 확정)
+        if(correctNorm.includes('ctrl+t → enter') && (norm.includes('enter') || norm.includes('ctrl+t'))) return true;
+        return norm === correctNorm;
+    }
+    // 서술형 키워드 기반 (2개 이상 매칭시 정답)
+    function checkDescriptive(qItem, answerStr) {
+        const lowerAnswer = answerStr.toLowerCase();
+        const keywords = qItem.data.keywords;
+        let matchCount = 0;
+        for(let kw of keywords) {
+            if(lowerAnswer.includes(kw.toLowerCase())) matchCount++;
+        }
+        // 최소 2개 키워드 또는 전체 키워드의 50%이상 (2개 미만 키워드셋은 1개로 완화)
+        if(keywords.length <= 2) return matchCount >= 1;
+        return matchCount >= Math.min(2, Math.floor(keywords.length * 0.5));
+    }
+
+    // 전체 채점 실행 및 기록 저장 (자동채점 기능)
+    function autoGrade() {
+        if(currentQuestions.length === 0) {
+            alert("먼저 '새 문제 생성'을 눌러 퀴즈를 만들어주세요.");
+            return;
+        }
+        let total = 0;
+        let correctCount = 0;
+        // 각 문항 채점
+        for(let q of currentQuestions) {
+            let userAns = q.userAnswer || '';
+            let isOk = false;
+            let feedback = "";
+            if(q.type === '객관식') {
+                if(userAns) isOk = checkObjective(q, userAns);
+                else isOk = false;
+                const correctAns = q.data.correct;
+                feedback = isOk ? "✅ 정답입니다!" : `❌ 오답. 정답: ${correctAns}`;
+            }
+            else if(q.type === '주관식') {
+                if(userAns) isOk = checkSubjective(q, userAns);
+                else isOk = false;
+                const correctShow = q.data.answer;
+                feedback = isOk ? "✅ 정답입니다!" : `❌ 오답. 기대 정답: ${correctShow}`;
+            }
+            else {
+                if(userAns) isOk = checkDescriptive(q, userAns);
+                else isOk = false;
+                const keywordsHint = q.data.keywords.join(", ");
+                feedback = isOk ? "✅ 서술형 통과 (핵심 포함)" : `❌ 보충 필요. 핵심 키워드: ${keywordsHint}`;
+            }
+            q.isCorrect = isOk;
+            q.feedbackText = feedback;
+            total++;
+            if(isOk) correctCount++;
+        }
+        // 오답노트 업데이트 (틀린 문제만)
+        const newMistakes = [];
+        for(let q of currentQuestions) {
+            if(q.isCorrect === false) {
+                let correctAnswerText = "";
+                if(q.type === '객관식') correctAnswerText = q.data.correct;
+                else if(q.type === '주관식') correctAnswerText = q.data.answer;
+                else correctAnswerText = `(키워드: ${q.data.keywords.join(", ")})`;
+                newMistakes.push({
+                    id: q.id,
+                    type: q.type,
+                    questionText: q.type === '객관식' ? q.data.text : q.data.text,
+                    userAnswer: q.userAnswer || "(미응답)",
+                    correctAnswer: correctAnswerText,
+                    explanation: q.feedbackText
+                });
+            }
+        }
+        mistakeList = newMistakes;  // 최신 오답만 저장 (새로채점시 갱신)
+        
+        // 전체 히스토리 저장: 현재 퀴즈 세트의 스냅샷 저장 (문제+답+정답여부)
+        const historySnapshot = {
+            timestamp: new Date().toLocaleString(),
+            questions: currentQuestions.map(q => ({
+                type: q.type,
+                text: q.type === '객관식' ? q.data.text : q.data.text,
+                user: q.userAnswer || '(없음)',
+                correct: q.isCorrect,
+                correctAnswer: q.type === '객관식' ? q.data.correct : (q.type === '주관식' ? q.data.answer : q.data.keywords.join(', '))
+            }))
+        };
+        fullHistory.push(historySnapshot);
+        
+        // 점수 표시 업데이트
+        document.getElementById('scoreValue').innerText = correctCount;
+        document.getElementById('totalPossible').innerText = total;
+        document.getElementById('wrongCountSpan').innerText = total - correctCount;
+        document.getElementById('scorePanel').style.display = 'flex';
+        
+        renderQuestions();   // 각 피드백 렌더링
+    }
+    
+    // 사용자 답변 저장 이벤트
+    function handleAnswerChange(questionId, value) {
+        const q = currentQuestions.find(qq => qq.id === questionId);
+        if(q) {
+            q.userAnswer = value;
+            // 이미 채점되어있던 상태에서 답변 수정시 채점 무효화 처리 (좋은 UX)
+            if(q.isCorrect !== undefined && q.isCorrect !== null){
+                q.isCorrect = null;
+                q.feedbackText = '';
+            }
+            renderQuestions();  // 리렌더
+        }
+    }
+
+    // 문제 렌더링 (동적)
+    function renderQuestions() {
+        const container = document.getElementById('quizArea');
+        if(!currentQuestions.length){
+            container.innerHTML = `<div class="empty-placeholder">
+                                        ✨ 아직 생성된 문제가 없습니다.<br>
+                                        상단 패널에서 문제 개수를 선택하고 <strong>「새 문제 생성」</strong> 버튼을 눌러주세요!
+                                    </div>`;
+            return;
+        }
+        let html = '';
+        currentQuestions.forEach(q => {
+            const qTypeClass = `type-${q.type}`;
+            html += `<div class="question-card ${qTypeClass}" data-id="${q.id}">
+                        <div class="question-header">
+                            <span class="q-type">📌 ${q.type}</span>
+                            <span style="font-size:0.7rem">ID: ${q.id}</span>
+                        </div>
+                        <div class="q-text">${escapeHtml(q.type === '객관식' ? q.data.text : q.data.text)}</div>`;
+            if(q.type === '객관식') {
+                html += `<div class="options-area">`;
+                q.data.options.forEach(opt => {
+                    const checkedAttr = (q.userAnswer === opt) ? 'checked' : '';
+                    html += `<div class="option-item">
+                                <input type="radio" name="q_${q.id}" value="${escapeHtml(opt)}" ${checkedAttr} onchange="handleAnswerChange(${q.id}, this.value)">
+                                <label>${escapeHtml(opt)}</label>
+                            </div>`;
+                });
+                html += `</div>`;
+            } else if(q.type === '주관식') {
+                html += `<div><input type="text" placeholder="단축키 입력 (예: Ctrl + Z)" value="${escapeHtml(q.userAnswer || '')}" 
+                            onchange="handleAnswerChange(${q.id}, this.value)" style="width:100%"></div>`;
+            } else {
+                html += `<div><textarea rows="3" placeholder="단축키 설명 또는 이유를 서술하세요..." 
+                            onchange="handleAnswerChange(${q.id}, this.value)">${escapeHtml(q.userAnswer || '')}</textarea></div>`;
+            }
+            if(q.feedbackText) {
+                const fbClass = (q.isCorrect === true) ? 'correct-fb' : (q.isCorrect === false ? 'wrong-fb' : '');
+                html += `<div class="feedback ${fbClass}">💬 ${escapeHtml(q.feedbackText)}</div>`;
+            } else if(q.userAnswer && q.userAnswer.trim() !== "" && q.isCorrect === null) {
+                html += `<div class="feedback" style="background:#f1f5f9;">✏️ 답변이 저장됨 (채점 필요)</div>`;
+            }
+            html += `</div>`;
+        });
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+    
+    // 오답노트 보기
+    function showMistakeNote() {
+        const panel = document.getElementById('mistakePanel');
+        const container = document.getElementById('mistakeList');
+        if(mistakeList.length === 0){
+            container.innerHTML = '<p>🎉 오답이 없습니다! 완벽해요. (아직 채점하지 않았거나 모두 정답)</p>';
+        } else {
+            let listHtml = '';
+            mistakeList.forEach(m => {
+                listHtml += `<div class="history-item"><strong>[${m.type}]</strong> ${escapeHtml(m.questionText)}<br>
+                            📝 내 답: ${escapeHtml(m.userAnswer)}<br>
+                            ✔️ 정답: ${escapeHtml(m.correctAnswer)}<br>
+                            📖 피드백: ${escapeHtml(m.explanation)}</div><hr>`;
+            });
+            container.innerHTML = listHtml;
+        }
+        panel.style.display = 'block';
+        document.getElementById('historyPanel').style.display = 'none';
+    }
+    
+    function showHistory() {
+        const panel = document.getElementById('historyPanel');
+        const container = document.getElementById('historyList');
+        if(fullHistory.length === 0){
+            container.innerHTML = '<p>아직 푼 기록이 없습니다. 자동채점을 진행하면 기록이 저장됩니다.</p>';
+        } else {
+            let historyHtml = '';
+            for(let i=fullHistory.length-1; i>=0; i--){
+                const rec = fullHistory[i];
+                historyHtml += `<div style="margin-bottom:16px; background:#f8fafc; padding:12px; border-radius:20px;"><strong>⏱️ ${rec.timestamp}</strong> (${rec.questions.length}문제)<br>`;
+                rec.questions.forEach(qq => {
+                    const mark = qq.correct ? '✅' : '❌';
+                    historyHtml += `<div style="margin-left:12px">${mark} ${escapeHtml(qq.text.substring(0,70))} — 답: ${escapeHtml(qq.user)}</div>`;
+                });
+                historyHtml += `</div>`;
+            }
+            container.innerHTML = historyHtml;
+        }
+        panel.style.display = 'block';
+        document.getElementById('mistakePanel').style.display = 'none';
+    }
+    
+    function closeSheets(){
+        document.getElementById('mistakePanel').style.display = 'none';
+        document.getElementById('historyPanel').style.display = 'none';
+    }
+
+    // 리셋 오답노트 (mistakeList 비우기)
+    function resetMistake() {
+        mistakeList = [];
+        alert("오답노트가 초기화되었습니다.");
+        if(document.getElementById('mistakePanel').style.display === 'block') showMistakeNote();
+    }
+    
+    // 초기 이벤트 바인딩
+    window.handleAnswerChange = handleAnswerChange;
+    document.getElementById('generateBtn').addEventListener('click', () => {
+        generateQuestions();
+    });
+    document.getElementById('scoreBtn').addEventListener('click', autoGrade);
+    document.getElementById('viewMistakeBtn').addEventListener('click', showMistakeNote);
+    document.getElementById('viewHistoryBtn').addEventListener('click', showHistory);
+    document.getElementById('closeSheetsBtn').addEventListener('click', closeSheets);
+    document.getElementById('resetMistakeBtn').addEventListener('click', resetMistake);
+    
+    // 중요: 맨 처음 접속시에는 문제가 없도록 유지 (currentQuestions = []) -> 렌더시 빈 플레이스홀더 표시됨
+    // 아무런 문제 생성 없이 플레이스홀더만 보여줌.
+    // currentQuestions 초기 [] 로 유지, 빈 화면 렌더.
+    // generate 버튼을 눌러야 문제 생성됨.
+    // 단, 빈 배열 상태에서도 필요한 핸들러 이상 무.
+    console.log("초기 상태: 문제 없음. 사용자가 설정 후 생성 버튼을 누르면 퀴즈가 나타납니다.");
+</script>
 </body>
 </html>
