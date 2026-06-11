@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -7,8 +8,8 @@
 
 <style>
 :root{
-    --primary:#2563eb;
-    --primary-dark:#1d4ed8;
+    --primary:#dc2626;
+    --primary-dark:#b91c1c;
 }
 
 *{
@@ -23,8 +24,8 @@ body{
     justify-content:center;
     align-items:center;
     background:
-        radial-gradient(circle at top right,#dbeafe 0%,transparent 40%),
-        radial-gradient(circle at bottom left,#bfdbfe 0%,transparent 35%),
+        radial-gradient(circle at top right,#fecaca 0%,transparent 40%),
+        radial-gradient(circle at bottom left,#fee2e2 0%,transparent 35%),
         #f8fafc;
     font-family:
         "Pretendard",
@@ -49,13 +50,14 @@ body{
     height:72px;
     margin:0 auto 16px;
     border-radius:20px;
-    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    background:linear-gradient(135deg,#dc2626,#ef4444);
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
     font-weight:700;
-    font-size:26px;
+    font-size:24px;
+    box-shadow:0 10px 25px rgba(220,38,38,.25);
 }
 
 .title{
@@ -86,13 +88,17 @@ body{
     font-weight:700;
     cursor:pointer;
     transition:.2s;
+    box-shadow:0 10px 25px rgba(220,38,38,.25);
+}
+
+.download-btn:hover{
+    transform:translateY(-2px);
 }
 
 .download-btn:active{
     transform:scale(.98);
 }
 
-/* 모달 */
 .modal{
     position:fixed;
     inset:0;
@@ -172,62 +178,70 @@ body{
 }
 
 .btn-yes{
-    background:#2563eb;
+    background:#dc2626;
     color:#fff;
 }
 </style>
+
 </head>
 <body>
 
 <div class="download-card">
 
-    <div class="file-icon">HWP</div>
+```
+<div class="file-icon">PDF</div>
 
-    <h2 class="title">디지털 사진 기말고사 답안지 다운로드</h2>
+<h2 class="title">
+    디지털 사진 기말고사 답안지 다운로드
+</h2>
 
-    <p class="description">
-        다운로드 전 유의사항을 반드시 확인해주세요.
-    </p>
+<p class="description">
+    다운로드 전 유의사항을 반드시 확인해주세요.
+</p>
 
-    <button class="download-btn" onclick="openModal()">
-        파일 다운로드
-    </button>
+<button class="download-btn" onclick="openModal()">
+    파일 다운로드
+</button>
+```
 
 </div>
 
-<!-- 모달 -->
 <div class="modal" id="noticeModal">
     <div class="modal-box">
 
-        <div class="modal-title">
-            ⚠ 유의사항
-        </div>
-
-        <div class="notice">
-            본 파일의 답안은 시험 날 그대로 출제되는 것이 아닌,
-            <strong>90%로 반영하여 출제</strong>되며
-            나머지 <strong>10%는 나도 모른다.</strong>
-        </div>
-
-        <div class="question">
-            이해했습니까?
-        </div>
-
-        <div class="modal-buttons">
-            <button class="btn btn-no" onclick="cancelDownload()">
-                아니오
-            </button>
-
-            <button class="btn btn-yes" onclick="downloadFile()">
-                네
-            </button>
-        </div>
-
+```
+    <div class="modal-title">
+        ⚠ 유의사항
     </div>
+
+    <div class="notice">
+        본 파일의 답안은 시험 날 그대로 출제되는 것이 아닌,
+        <strong>90%로 반영하여 출제</strong>되며
+        나머지 <strong>10%는 나도 모른다.</strong>
+    </div>
+
+    <div class="question">
+        이해했습니까?
+    </div>
+
+    <div class="modal-buttons">
+        <button class="btn btn-no" onclick="cancelDownload()">
+            아니오
+        </button>
+
+        <button class="btn btn-yes" onclick="downloadFile()">
+            네
+        </button>
+    </div>
+
+</div>
+```
+
 </div>
 
 <script>
-const FILE_URL = "files/application.hwp";
+
+const FILE_URL = "https://raw.githubusercontent.com/Yousoo68/bqlEsp/040747f171de2b36de69c62aaf08af83bee4675e/2026_1%ED%95%99%EA%B8%B0_%EB%94%94%EC%A7%80%ED%84%B8%EC%82%AC%EC%A7%84-%EC%A7%80%ED%95%84%EA%B3%A0%EC%82%AC%20%EC%98%88%EC%83%81%EB%AC%B8%EC%A0%9C(%EB%8B%B5).pdf";
 
 function openModal(){
     document
@@ -250,12 +264,26 @@ function downloadFile(){
     closeModal();
 
     const a = document.createElement("a");
+
     a.href = FILE_URL;
-    a.download = "";
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 }
+
+document
+.getElementById("noticeModal")
+.addEventListener("click", function(e){
+
+    if(e.target === this){
+        closeModal();
+    }
+
+});
+
 </script>
 
 </body>
