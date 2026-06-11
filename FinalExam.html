@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -78,11 +77,7 @@ body{
     height:56px;
     border:none;
     border-radius:16px;
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--primary-dark)
-    );
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
     color:#fff;
     font-size:1rem;
     font-weight:700;
@@ -99,6 +94,7 @@ body{
     transform:scale(.98);
 }
 
+/* 모달 */
 .modal{
     position:fixed;
     inset:0;
@@ -184,6 +180,7 @@ body{
 </style>
 
 </head>
+
 <body>
 
 <div class="download-card">
@@ -204,6 +201,7 @@ body{
 
 </div>
 
+<!-- 모달 -->
 <div class="modal" id="noticeModal">
     <div class="modal-box">
 
@@ -239,15 +237,11 @@ body{
 const FILE_URL = "DigitalPhotoAnswerSheet.pdf";
 
 function openModal(){
-    document
-        .getElementById("noticeModal")
-        .classList.add("active");
+    document.getElementById("noticeModal").classList.add("active");
 }
 
 function closeModal(){
-    document
-        .getElementById("noticeModal")
-        .classList.remove("active");
+    document.getElementById("noticeModal").classList.remove("active");
 }
 
 function cancelDownload(){
@@ -259,24 +253,21 @@ function downloadFile(){
     closeModal();
 
     const a = document.createElement("a");
-
     a.href = FILE_URL;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
+
+    // 🔥 핵심: 다운로드 강제 + 파일명 지정
+    a.download = "DigitalPhotoAnswerSheet.pdf";
 
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 }
 
-document
-.getElementById("noticeModal")
-.addEventListener("click", function(e){
-
+// 모달 바깥 클릭 시 닫기
+document.getElementById("noticeModal").addEventListener("click", function(e){
     if(e.target === this){
         closeModal();
     }
-
 });
 
 </script>
