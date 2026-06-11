@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>디지털 사진</title>
+
+<style>
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        radial-gradient(circle at top right,#dbeafe 0%,transparent 40%),
+        radial-gradient(circle at bottom left,#bfdbfe 0%,transparent 35%),
+        #f8fafc;
+    font-family:
+        "Pretendard",
+        "Apple SD Gothic Neo",
+        "Noto Sans KR",
+        sans-serif;
+    padding:20px;
+}
+
+.download-card{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:24px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.file-icon{
+    width:72px;
+    height:72px;
+    margin:0 auto 16px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:26px;
+}
+
+.title{
+    font-size:1.2rem;
+    font-weight:700;
+    color:#111827;
+}
+
+.description{
+    margin-top:8px;
+    color:#6b7280;
+    line-height:1.5;
+}
+
+.download-btn{
+    width:100%;
+    margin-top:24px;
+    height:56px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.download-btn:active{
+    transform:scale(.98);
+}
+
+/* 모달 */
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:999;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:22px;
+    padding:24px;
+    animation:popup .2s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.modal-title{
+    font-size:1.15rem;
+    font-weight:700;
+    margin-bottom:16px;
+    color:#111827;
+}
+
+.notice{
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:16px;
+    line-height:1.7;
+    color:#374151;
+    font-size:.95rem;
+}
+
+.question{
+    margin-top:18px;
+    font-weight:700;
+    text-align:center;
+}
+
+.modal-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:20px;
+}
+
+.btn{
+    flex:1;
+    height:50px;
+    border:none;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.btn-no{
+    background:#f3f4f6;
+    color:#374151;
+}
+
+.btn-yes{
+    background:#2563eb;
+    color:#fff;
+}
+</style>
+</head>
+<body>
+
+<div class="download-card">
+
+    <div class="file-icon">HWP</div>
+
+    <h2 class="title">디지털 사진 기말고사 답안지 다운로드</h2>
+
+    <p class="description">
+        다운로드 전 유의사항을 반드시 확인해주세요.
+    </p>
+
+    <button class="download-btn" onclick="openModal()">
+        파일 다운로드
+    </button>
+
+</div>
+
+<!-- 모달 -->
+<div class="modal" id="noticeModal">
+    <div class="modal-box">
+
+        <div class="modal-title">
+            ⚠ 유의사항
+        </div>
+
+        <div class="notice">
+            본 파일의 답안은 시험 날 그대로 출제되는 것이 아닌,
+            <strong>90%로 반영하여 출제</strong>되며
+            나머지 <strong>10%는 나도 모른다.</strong>
+        </div>
+
+        <div class="question">
+            이해했습니까?
+        </div>
+
+        <div class="modal-buttons">
+            <button class="btn btn-no" onclick="cancelDownload()">
+                아니오
+            </button>
+
+            <button class="btn btn-yes" onclick="downloadFile()">
+                네
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const FILE_URL = "files/application.hwp";
+
+function openModal(){
+    document
+        .getElementById("noticeModal")
+        .classList.add("active");
+}
+
+function closeModal(){
+    document
+        .getElementById("noticeModal")
+        .classList.remove("active");
+}
+
+function cancelDownload(){
+    closeModal();
+}
+
+function downloadFile(){
+
+    closeModal();
+
+    const a = document.createElement("a");
+    a.href = FILE_URL;
+    a.download = "";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+</script>
+
+</body>
+</html>
